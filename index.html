@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ezequiel Reyes | Desarrollador de Software Full Stack (.NET & Angular)</title>
+  
+  <!-- SEO & Meta Tags -->
+  <meta name="description" content="Portafolio profesional de Ezequiel Reyes, Desarrollador Full Stack con +3 años de experiencia especializado en Angular, ASP.NET Core y SQL Server. San Luis Potosí, México.">
+  <meta name="author" content="Ezequiel Reyes">
+  <meta name="keywords" content="Ezequiel Reyes, Desarrollador Full Stack, .NET Developer, Angular, C#, ASP.NET Core, SQL Server, Portfolio, San Luis Potosí">
+
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ezequielreyes.dev/">
+  <meta property="og:title" content="Ezequiel Reyes | Desarrollador Full Stack (.NET & Angular)">
+  <meta property="og:description" content="+3 años creando aplicaciones web empresariales, APIs RESTful y bases de datos optimizadas. Conoce mis proyectos y experiencia.">
+  <meta property="og:image" content="https://ezequielreyes.dev/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%22100%22%20height=%22100%22><rect width=%22100%22 height=%22100%22 rx=%2225%22 fill=%22%234f46e5%22/><text y=%2265%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22system-ui,sans-serif%22 font-size=%2250%22 font-weight=%22800%22 fill=%22white%22>&lt;ER/&gt;</text></svg>">
+
+  <!-- Tailwind CSS via CDN with custom color scheme -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace'],
+          },
+          colors: {
+            primary: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons (Ligeros y estéticos) -->
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css"/>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-body text-main antialiased selection:bg-primary-500 selection:text-white transition-colors duration-300">
+
+  <!-- Glow Background Accents -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
+
+  <!-- Barra de Navegación Flotante -->
+  <header class="fixed top-0 left-0 right-0 z-50 py-3 transition-all duration-300" id="main-nav">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <nav class="nav-glass flex items-center justify-between px-5 py-3 rounded-2xl border transition-all duration-300">
+        
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-2 group font-mono font-bold text-lg text-main">
+          <span class="logo-box flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-tr from-primary-600 to-indigo-500 text-white shadow-md shadow-primary-500/30 group-hover:scale-105 transition-transform">
+            &lt;ER/&gt;
+          </span>
+          <span class="tracking-tight font-sans font-extrabold group-hover:text-primary-500 transition-colors">Ezequiel Reyes</span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+          <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
+          <a href="#habilidades" class="nav-link">Habilidades</a>
+          <a href="#experiencia" class="nav-link">Experiencia</a>
+          <a href="#proyectos" class="nav-link">Proyectos</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-3">
+          <!-- Theme Switcher -->
+          <button id="theme-toggle" type="button" aria-label="Cambiar tema" class="w-9 h-9 rounded-xl border flex items-center justify-center hover:bg-card-sub transition-colors text-muted hover:text-main">
+            <i class="ph ph-sun text-lg dark:hidden"></i>
+            <i class="ph ph-moon text-lg hidden dark:inline"></i>
+          </button>
+
+          <!-- CV Download Button (Desktop) -->
+          <a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-primary-600 to-indigo-600 text-white shadow-md shadow-primary-600/25 hover:shadow-lg hover:shadow-primary-600/40 hover:-translate-y-0.5 transition-all">
+            <i class="ph-bold ph-download-simple"></i>
+            <span>Descargar CV</span>
+          </a>
+
+          <!-- Mobile Menu Trigger -->
+          <button id="mobile-menu-btn" type="button" aria-label="Abrir menú" class="md:hidden w-9 h-9 rounded-xl border flex items-center justify-center hover:bg-card-sub transition-colors text-main">
+            <i class="ph-bold ph-list text-xl"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2">
+      <div class="max-w-6xl mx-auto nav-glass rounded-2xl p-5 border shadow-xl flex flex-col gap-4">
+        <a href="#sobre-mi" class="mobile-nav-link">Sobre Mí</a>
+        <a href="#habilidades" class="mobile-nav-link">Habilidades</a>
+        <a href="#experiencia" class="mobile-nav-link">Experiencia</a>
+        <a href="#proyectos" class="mobile-nav-link">Proyectos</a>
+        <a href="#contacto" class="mobile-nav-link">Contacto</a>
+        <hr class="border-edge my-1">
+        <a href="cv.pdf" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold bg-primary-600 text-white">
+          <i class="ph-bold ph-download-simple"></i>
+          <span>Descargar CV (PDF)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col items-center text-center">
+          
+          <!-- Availability Pill -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-semibold mb-6 animate-fade-in">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Disponible para nuevos retos & oportunidades</span>
+          </div>
+
+          <!-- Hero Heading -->
+          <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-4 text-main max-w-4xl leading-tight">
+            Hola, soy <span class="bg-gradient-to-r from-primary-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">Ezequiel Reyes</span>
+          </h1>
+
+          <!-- Role Subtitle -->
+          <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-lg sm:text-2xl font-bold text-muted mb-6">
+            <span>Desarrollador de Software Full Stack</span>
+            <span class="hidden sm:inline text-primary-500">•</span>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-primary-500/10 text-primary-400 border border-primary-500/20 text-sm sm:text-base font-mono">
+              <span>.NET</span>
+              <span>/</span>
+              <span>Angular</span>
+            </div>
+          </div>
+
+          <!-- Pitch Summary -->
+          <p class="max-w-2xl text-base sm:text-lg text-muted font-normal leading-relaxed mb-8">
+            Especializado en diseñar y desarrollar <strong>aplicaciones web empresariales escalables</strong>, arquitecturas limpias y APIs RESTful de alto rendimiento. Con más de 3 años de experiencia integrando <strong>ASP.NET Core</strong>, <strong>Angular</strong> y <strong>SQL Server</strong> bajo metodologías ágiles.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+            <a href="#proyectos" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-primary-600 via-indigo-600 to-cyan-600 text-white shadow-lg shadow-primary-600/25 hover:shadow-xl hover:shadow-primary-600/40 hover:-translate-y-0.5 transition-all">
+              <i class="ph-bold ph-rocket-launch text-base"></i>
+              <span>Ver Proyectos Destacados</span>
+            </a>
+            <a href="https://wa.me/527292612443?text=Hola%20Ezequiel,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20una%20oportunidad" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm border border-edge bg-card hover:bg-card-sub text-main hover:-translate-y-0.5 transition-all">
+              <i class="ph-bold ph-whatsapp-logo text-emerald-500 text-lg"></i>
+              <span>Enviar WhatsApp</span>
+            </a>
+            <a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm border border-edge bg-card hover:bg-card-sub text-main hover:-translate-y-0.5 transition-all">
+              <i class="ph-bold ph-file-pdf text-red-500 text-lg"></i>
+              <span>Ver CV (PDF)</span>
+            </a>
+          </div>
+
+          <!-- Quick Contact Bar -->
+          <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-muted border-t border-edge pt-8">
+            <div class="flex items-center gap-2">
+              <i class="ph ph-map-pin text-primary-500 text-base"></i>
+              <span>San Luis Potosí, México</span>
+            </div>
+            <span class="hidden sm:inline text-edge">•</span>
+            <button type="button" onclick="copyToClipboard('josereyesrt@gmail.com', 'Correo copiado al portapapeles')" class="flex items-center gap-2 hover:text-primary-400 transition-colors cursor-pointer group">
+              <i class="ph ph-envelope text-primary-500 text-base"></i>
+              <span class="group-hover:underline">josereyesrt@gmail.com</span>
+              <i class="ph ph-copy opacity-0 group-hover:opacity-100 transition-opacity text-xs"></i>
+            </button>
+            <span class="hidden sm:inline text-edge">•</span>
+            <a href="tel:+527292612443" class="flex items-center gap-2 hover:text-primary-400 transition-colors">
+              <i class="ph ph-phone text-primary-500 text-base"></i>
+              <span>72 92 61 24 43</span>
+            </a>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-4xl mt-12">
+            <div class="stat-card">
+              <div class="stat-num">+3 Años</div>
+              <div class="stat-label">Experiencia Profesional</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">Full Stack</div>
+              <div class="stat-label">Angular + .NET + SQL</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">&lt; 24h</div>
+              <div class="stat-label">Resolución Incidentes Críticos</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">ISC</div>
+              <div class="stat-label">Ing. Sistemas Computacionales</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ SECTION -->
+    <section id="sobre-mi" class="py-20 border-t border-edge relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="section-badge">
+          <i class="ph-bold ph-user"></i>
+          <span>Perfil Profesional</span>
+        </div>
+        <h2 class="section-title">Sobre Mí</h2>
+        <p class="section-subtitle">Pasión por la arquitectura limpia, el código mantenible y las soluciones orientadas a resultados de negocio.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mt-12">
+          
+          <!-- Bio Principal -->
+          <div class="lg:col-span-7 card p-8 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl sm:text-2xl font-bold text-main mb-4 leading-snug">
+                Creando software empresarial confiable que impulsa operaciones reales
+              </h3>
+              <p class="text-muted leading-relaxed mb-5">
+                Soy un <strong>Desarrollador de Software Full Stack</strong> egresado del <em>Instituto Tecnológico de San Luis Potosí</em>. A lo largo de mi trayectoria me he especializado en el ecosistema <strong>.NET (C# / ASP.NET Core)</strong> en el backend, <strong>Angular (12+)</strong> en el frontend y <strong>Microsoft SQL Server</strong> como motor de base de datos.
+              </p>
+              <p class="text-muted leading-relaxed mb-5">
+                Me enfoco en el ciclo de vida completo del desarrollo: desde el levantamiento y modelado de datos, diseño de APIs RESTful seguras, maquetación de interfaces responsivas y centradas en el usuario, hasta el despliegue en entornos productivos (IIS, Tunnels seguros) y soporte operativo continuo.
+              </p>
+              <p class="text-muted leading-relaxed">
+                Trabajo de forma metódica bajo el marco ágil <strong>SCRUM</strong>, promoviendo la colaboración estrecha con diseñadores y stakeholders para entregar software que cumpla rigurosos estándares de rendimiento, disponibilidad y mantenibilidad.
+              </p>
+            </div>
+
+            <!-- Pillars -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6 mt-6 border-t border-edge">
+              <div class="p-3 rounded-xl bg-card-sub border border-edge">
+                <i class="ph-bold ph-shield-check text-primary-500 text-xl mb-1"></i>
+                <div class="font-bold text-xs text-main">Calidad & Pruebas</div>
+                <div class="text-[11px] text-muted">Clean Code & Tests</div>
+              </div>
+              <div class="p-3 rounded-xl bg-card-sub border border-edge">
+                <i class="ph-bold ph-lightning text-amber-500 text-xl mb-1"></i>
+                <div class="font-bold text-xs text-main">Rendimiento SQL</div>
+                <div class="text-[11px] text-muted">Optimización Stored Procs</div>
+              </div>
+              <div class="p-3 rounded-xl bg-card-sub border border-edge">
+                <i class="ph-bold ph-users-three text-cyan-500 text-xl mb-1"></i>
+                <div class="font-bold text-xs text-main">Trabajo en Equipo</div>
+                <div class="text-[11px] text-muted">SCRUM & Comunicación</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Datos Rápidos / Educación -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+            
+            <!-- Card Educación -->
+            <div class="card p-6 border-l-4 border-l-primary-500">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-primary-500/10 text-primary-400 flex items-center justify-center text-xl">
+                  <i class="ph-bold ph-graduation-cap"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-mono text-primary-400 uppercase tracking-wider font-semibold">Educación</div>
+                  <h4 class="font-bold text-base text-main">Ingeniería en Sistemas Computacionales</h4>
+                </div>
+              </div>
+              <div class="text-sm font-semibold text-muted">Instituto Tecnológico de San Luis Potosí</div>
+              <div class="text-xs text-muted/80 mt-1 font-mono">2014 – 2020 • Titulado</div>
+              <p class="text-xs text-muted mt-3">Formación sólida en ciencias de la computación, estructuras de datos, programación orientada a objetos, bases de datos y arquitectura de sistemas.</p>
+            </div>
+
+            <!-- Card Idiomas & Ubicación -->
+            <div class="card p-6 flex flex-col justify-between flex-1">
+              <h4 class="font-bold text-base text-main mb-4 flex items-center gap-2">
+                <i class="ph-bold ph-globe text-primary-500"></i>
+                <span>Idiomas & Disponibilidad</span>
+              </h4>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-main">Español</span>
+                    <span class="text-primary-400">Nativo</span>
+                  </div>
+                  <div class="w-full h-2 bg-card-sub rounded-full overflow-hidden">
+                    <div class="h-full bg-primary-500 rounded-full w-full"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-main">Inglés</span>
+                    <span class="text-muted">Lectura técnica & documentación</span>
+                  </div>
+                  <div class="w-full h-2 bg-card-sub rounded-full overflow-hidden">
+                    <div class="h-full bg-primary-500/60 rounded-full w-3/5"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-edge flex items-center justify-between text-xs text-muted">
+                <span class="flex items-center gap-1.5">
+                  <i class="ph-bold ph-house-line text-emerald-500"></i>
+                  <span>Remoto / Híbrido</span>
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <i class="ph-bold ph-clock text-indigo-400"></i>
+                  <span>Tiempo Completo</span>
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HABILIDADES SECTION -->
+    <section id="habilidades" class="py-20 border-t border-edge relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="section-badge">
+          <i class="ph-bold ph-cpu"></i>
+          <span>Stack Tecnológico</span>
+        </div>
+        <h2 class="section-title">Habilidades & Competencias</h2>
+        <p class="section-subtitle">Tecnologías y herramientas que domino para construir soluciones robustas de principio a fin.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          
+          <!-- Frontend -->
+          <div class="card p-6 group hover:border-primary-500/40 transition-colors">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="ph-bold ph-browsers"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg text-main">Frontend</h3>
+                <span class="text-xs text-muted">SPAs & Interfaces UI/UX</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-chip tech-chip-red">Angular (12+)</span>
+              <span class="tech-chip tech-chip-red">TypeScript</span>
+              <span class="tech-chip">JavaScript (ES6+)</span>
+              <span class="tech-chip">HTML5 / CSS3</span>
+              <span class="tech-chip">SCSS / SASS</span>
+              <span class="tech-chip">Responsive Design</span>
+              <span class="tech-chip">Bootstrap & Tailwind</span>
+              <span class="tech-chip">RxJS & Signals</span>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="card p-6 group hover:border-primary-500/40 transition-colors">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="ph-bold ph-server"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg text-main">Backend</h3>
+                <span class="text-xs text-muted">APIs & Arquitectura</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-chip tech-chip-indigo">ASP.NET Core</span>
+              <span class="tech-chip tech-chip-indigo">C# (.NET 8 / 10)</span>
+              <span class="tech-chip">Entity Framework Core</span>
+              <span class="tech-chip">APIs RESTful</span>
+              <span class="tech-chip">PHP</span>
+              <span class="tech-chip">Clean Architecture</span>
+              <span class="tech-chip">Autenticación JWT</span>
+              <span class="tech-chip">Microservicios básicos</span>
+            </div>
+          </div>
+
+          <!-- Bases de Datos -->
+          <div class="card p-6 group hover:border-primary-500/40 transition-colors">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="ph-bold ph-database"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg text-main">Bases de Datos</h3>
+                <span class="text-xs text-muted">Modelado & Optimización</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-chip tech-chip-blue">SQL Server</span>
+              <span class="tech-chip tech-chip-blue">Stored Procedures</span>
+              <span class="tech-chip">Optimización de Consultas</span>
+              <span class="tech-chip">Transacciones ACID</span>
+              <span class="tech-chip">Modelado Relacional</span>
+              <span class="tech-chip">Índices & Planes de Ejecución</span>
+              <span class="tech-chip">Multi-tenant Databases</span>
+            </div>
+          </div>
+
+          <!-- Herramientas & Control de Versiones -->
+          <div class="card p-6 group hover:border-primary-500/40 transition-colors">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="ph-bold ph-git-branch"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg text-main">Herramientas</h3>
+                <span class="text-xs text-muted">Gestión & Versionado</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-chip tech-chip-amber">Git</span>
+              <span class="tech-chip">Bitbucket</span>
+              <span class="tech-chip">Jira</span>
+              <span class="tech-chip">Sourcetree</span>
+              <span class="tech-chip">VS Code</span>
+              <span class="tech-chip">Visual Studio 2026</span>
+              <span class="tech-chip">Postman</span>
+              <span class="tech-chip">SQL Server Management Studio</span>
+            </div>
+          </div>
+
+          <!-- Servidores & Despliegue -->
+          <div class="card p-6 group hover:border-primary-500/40 transition-colors">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="ph-bold ph-cloud-arrow-up"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg text-main">DevOps & Hosting</h3>
+                <span class="text-xs text-muted">Despliegue & Seguridad</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-chip tech-chip-cyan">IIS (Internet Information Services)</span>
+              <span class="tech-chip tech-chip-cyan">Cloudflare Tunnels</span>
+              <span class="tech-chip">DNS & Dominios</span>
+              <span class="tech-chip">SSL / TLS Seguro</span>
+              <span class="tech-chip">PowerShell Scripting</span>
+              <span class="tech-chip">Windows Firewall</span>
+              <span class="tech-chip">Publicación Continua</span>
+            </div>
+          </div>
+
+          <!-- Metodologías & Prácticas -->
+          <div class="card p-6 group hover:border-primary-500/40 transition-colors">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="ph-bold ph-check-circle"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg text-main">Metodologías</h3>
+                <span class="text-xs text-muted">Procesos & Calidad</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-chip tech-chip-emerald">Ágil (SCRUM)</span>
+              <span class="tech-chip">Dailies / Planning / Retros</span>
+              <span class="tech-chip">Pruebas Unitarias</span>
+              <span class="tech-chip">Mantenimiento Correctivo</span>
+              <span class="tech-chip">Mantenimiento Evolutivo</span>
+              <span class="tech-chip">Resolución Incidentes Críticos</span>
+              <span class="tech-chip">Refactorización</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA SECTION -->
+    <section id="experiencia" class="py-20 border-t border-edge relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="section-badge">
+          <i class="ph-bold ph-briefcase"></i>
+          <span>Trayectoria</span>
+        </div>
+        <h2 class="section-title">Experiencia Laboral</h2>
+        <p class="section-subtitle">Empresas e iniciativas donde he aportado valor técnico y resuelto necesidades críticas de negocio.</p>
+
+        <!-- Timeline -->
+        <div class="relative mt-12 pl-6 sm:pl-10 space-y-12 before:content-[''] before:absolute before:left-2.5 sm:before:left-3.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-edge">
+          
+          <!-- Experiencia 1: Imex Bioware -->
+          <div class="relative group">
+            <!-- Timeline dot -->
+            <div class="absolute -left-6 sm:-left-10 top-1.5 w-6 h-6 rounded-full bg-card border-2 border-primary-500 flex items-center justify-center group-hover:scale-125 transition-transform">
+              <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+            </div>
+
+            <div class="card p-6 sm:p-8">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-bold text-main">Imex Bioware</h3>
+                  <div class="text-sm font-semibold text-primary-400">Desarrollador de Software Full Stack (.NET / Angular)</div>
+                </div>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-500/10 text-primary-400 border border-primary-500/20 text-xs font-mono font-semibold self-start sm:self-auto">
+                  <i class="ph-bold ph-calendar-blank"></i>
+                  <span>Marzo 2022 – Presente</span>
+                </div>
+              </div>
+
+              <ul class="space-y-3 text-muted text-sm sm:text-base mb-6 leading-relaxed">
+                <li class="flex items-start gap-2.5">
+                  <i class="ph-bold ph-check text-primary-500 mt-1 shrink-0"></i>
+                  <span><strong>Desarrollo y mantenimiento</strong> de aplicaciones web empresariales utilizando <strong>Angular (12+)</strong>, <strong>ASP.NET Core</strong> y <strong>SQL Server</strong>.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="ph-bold ph-check text-primary-500 mt-1 shrink-0"></i>
+                  <span><strong>Diseño e implementación de APIs RESTful</strong> robustas y documentadas para consumo de sistemas internos y aliados externos.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="ph-bold ph-check text-primary-500 mt-1 shrink-0"></i>
+                  <span><strong>Optimización de procedimientos almacenados</strong> y consultas SQL complejas, logrando reducciones sustanciales en los tiempos de respuesta del sistema.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="ph-bold ph-check text-primary-500 mt-1 shrink-0"></i>
+                  <span><strong>Resolución de incidentes críticos en menos de 24 horas</strong> en entornos de producción, garantizando la continuidad operativa del negocio.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="ph-bold ph-check text-primary-500 mt-1 shrink-0"></i>
+                  <span>Uso riguroso de <strong>Git, Bitbucket y Jira</strong> para versionamiento, trazabilidad y trabajo en equipo.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="ph-bold ph-check text-primary-500 mt-1 shrink-0"></i>
+                  <span>Participación activa en todas las ceremonias del marco <strong>SCRUM</strong> (Dailies, Sprint Planning, Reviews y Retrospectivas).</span>
+                </li>
+              </ul>
+
+              <div class="flex flex-wrap gap-2 pt-4 border-t border-edge">
+                <span class="tech-chip text-xs">Angular 12+</span>
+                <span class="tech-chip text-xs">ASP.NET Core</span>
+                <span class="tech-chip text-xs">C#</span>
+                <span class="tech-chip text-xs">SQL Server</span>
+                <span class="tech-chip text-xs">Stored Procedures</span>
+                <span class="tech-chip text-xs">REST APIs</span>
+                <span class="tech-chip text-xs">SCRUM</span>
+                <span class="tech-chip text-xs">Jira</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experiencia 2: 3DoubleU Marketing -->
+          <div class="relative group">
+            <!-- Timeline dot -->
+            <div class="absolute -left-6 sm:-left-10 top-1.5 w-6 h-6 rounded-full bg-card border-2 border-slate-600 flex items-center justify-center group-hover:scale-125 transition-transform">
+              <div class="w-2 h-2 rounded-full bg-slate-500"></div>
+            </div>
+
+            <div class="card p-6 sm:p-8">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-bold text-main">3DoubleU Marketing</h3>
+                  <div class="text-sm font-semibold text-muted">Desarrollador Web</div>
+                </div>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-card-sub text-muted border border-edge text-xs font-mono font-semibold self-start sm:self-auto">
+                  <i class="ph-bold ph-calendar-blank"></i>
+                  <span>Ene 2021 – Ago 2021</span>
+                </div>
+              </div>
+
+              <ul class="space-y-3 text-muted text-sm sm:text-base mb-6 leading-relaxed">
+                <li class="flex items-start gap-2.5">
+                  <i class="ph-bold ph-check text-slate-400 mt-1 shrink-0"></i>
+                  <span><strong>Desarrollo de sitios web administrables</strong> utilizando PHP, JavaScript, HTML5 y CSS3.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="ph-bold ph-check text-slate-400 mt-1 shrink-0"></i>
+                  <span><strong>Maquetación UI/UX responsiva</strong>: transformación de prototipos visuales en interfaces 100% funcionales para móviles y computadoras.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="ph-bold ph-check text-slate-400 mt-1 shrink-0"></i>
+                  <span><strong>Mantenimiento correctivo</strong> y depuración de incidencias en sitios web productivos.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="ph-bold ph-check text-slate-400 mt-1 shrink-0"></i>
+                  <span>Colaboración multidisciplinaria con diseñadores gráficos y equipos no técnicos para entregas en tiempo y forma.</span>
+                </li>
+              </ul>
+
+              <div class="flex flex-wrap gap-2 pt-4 border-t border-edge">
+                <span class="tech-chip text-xs">PHP</span>
+                <span class="tech-chip text-xs">JavaScript</span>
+                <span class="tech-chip text-xs">HTML5</span>
+                <span class="tech-chip text-xs">CSS3</span>
+                <span class="tech-chip text-xs">UI/UX Design</span>
+                <span class="tech-chip text-xs">Cross-browser</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROYECTOS DESTACADOS SECTION -->
+    <section id="proyectos" class="py-20 border-t border-edge relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="section-badge">
+          <i class="ph-bold ph-folder-notch-open"></i>
+          <span>Portafolio de Proyectos</span>
+        </div>
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <p class="section-subtitle">Sistemas reales y plataformas diseñadas con arquitectura escalable, código limpio y valor práctico.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+          
+          <!-- Proyecto 1: Karla Boutique POS -->
+          <div class="card p-7 flex flex-col justify-between border-2 border-primary-500/30 shadow-xl shadow-primary-500/5 group hover:border-primary-500 transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>En Producción / Live Demo</span>
+                  </span>
+                  <span class="px-2.5 py-1 rounded-md bg-primary-500/10 text-primary-400 border border-primary-500/20 text-xs font-semibold">
+                    Multi-Tenant SaaS
+                  </span>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-primary-500/10 text-primary-400 flex items-center justify-center text-xl">
+                  <i class="ph-bold ph-storefront"></i>
+                </div>
+              </div>
+
+              <h3 class="text-2xl font-bold text-main mb-2 group-hover:text-primary-400 transition-colors">
+                Karla Boutique — Sistema Punto de Venta & Inventario
+              </h3>
+
+              <p class="text-muted text-sm leading-relaxed mb-4">
+                Plataforma SaaS multi-inquilino de gestión comercial avanzada. Diseñada con aislamiento total de base de datos por cliente (SQL Server dinámico), soporte de <strong>doble esquema comercial</strong> (venta directa y esquema de consignación con liquidación automática a proveedores), y control estricto de <strong>corte de caja</strong> (apertura, arqueo ciego, egresos, retiros y cierre).
+              </p>
+
+              <div class="space-y-2 mb-6 text-xs text-muted">
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-primary-500"></i>
+                  <span>Aprovisionamiento automático de bases de datos por tenant</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-primary-500"></i>
+                  <span>Roles granulares (Administrador / Cajero) y permisos configurables</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-primary-500"></i>
+                  <span>Control de crédito, abonos parciales y clientes de contado</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-primary-500"></i>
+                  <span>PWA Responsiva optimizada para móviles y tablets de venta</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="tech-chip text-xs">Angular 22</span>
+                <span class="tech-chip text-xs">ASP.NET Core (.NET 10)</span>
+                <span class="tech-chip text-xs">Entity Framework Core</span>
+                <span class="tech-chip text-xs">SQL Server</span>
+                <span class="tech-chip text-xs">Clean Architecture</span>
+                <span class="tech-chip text-xs">IIS & Cloudflare Tunnel</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-edge flex items-center justify-between">
+              <a href="https://karlaboutique.ezequielreyes.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-bold text-primary-400 hover:text-primary-300 transition-colors group-hover:translate-x-1 duration-200">
+                <span>Acceder a la Plataforma Demo</span>
+                <i class="ph-bold ph-arrow-up-right"></i>
+              </a>
+              <span class="text-xs text-muted font-mono">karlaboutique.ezequielreyes.dev</span>
+            </div>
+          </div>
+
+          <!-- Proyecto 2: Control de Gastos -->
+          <div class="card p-7 flex flex-col justify-between group hover:border-primary-500/50 transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold">
+                    Sistema Web
+                  </span>
+                  <span class="px-2.5 py-1 rounded-md bg-card-sub text-muted border border-edge text-xs font-semibold">
+                    Finanzas & Contabilidad
+                  </span>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl">
+                  <i class="ph-bold ph-chart-line-up"></i>
+                </div>
+              </div>
+
+              <h3 class="text-2xl font-bold text-main mb-2 group-hover:text-indigo-400 transition-colors">
+                Control de Gastos Personal & Empresarial
+              </h3>
+
+              <p class="text-muted text-sm leading-relaxed mb-4">
+                Aplicación web integral para la administración, presupuestación y seguimiento de flujos financieros en tiempo real. Permite categorización jerárquica de egresos e ingresos, generación de balances comparativos mensuales y alertas automáticas de desviación de presupuesto.
+              </p>
+
+              <div class="space-y-2 mb-6 text-xs text-muted">
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-indigo-400"></i>
+                  <span>Dashboards analíticos con gráficos interactivos</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-indigo-400"></i>
+                  <span>Exportación estructurada de reportes contables</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-indigo-400"></i>
+                  <span>Backend desacoplado con endpoints optimizados en ASP.NET</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="tech-chip text-xs">ASP.NET Core</span>
+                <span class="tech-chip text-xs">C#</span>
+                <span class="tech-chip text-xs">SQL Server</span>
+                <span class="tech-chip text-xs">Stored Procedures</span>
+                <span class="tech-chip text-xs">Frontend SPA</span>
+                <span class="tech-chip text-xs">IIS Server</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-edge flex items-center justify-between text-xs text-muted">
+              <span class="flex items-center gap-1.5">
+                <i class="ph-bold ph-lock-key"></i>
+                <span>Sistema Interno Productivo</span>
+              </span>
+              <span class="font-mono">IIS Host</span>
+            </div>
+          </div>
+
+          <!-- Proyecto 3: Arquitectura Empresarial Imex Bioware -->
+          <div class="card p-7 flex flex-col justify-between group hover:border-primary-500/50 transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-semibold">
+                  Misión Crítica Empresarial
+                </span>
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
+                  <i class="ph-bold ph-buildings"></i>
+                </div>
+              </div>
+
+              <h3 class="text-2xl font-bold text-main mb-2 group-hover:text-cyan-400 transition-colors">
+                Módulos de Gestión Empresarial (Imex Bioware)
+              </h3>
+
+              <p class="text-muted text-sm leading-relaxed mb-4">
+                Participación en el núcleo de desarrollo de aplicaciones web corporativas de alto volumen transaccional. Implementación de APIs RESTful que conectan servicios internos con proveedores externos bajo rigurosos protocolos de disponibilidad.
+              </p>
+
+              <div class="space-y-2 mb-6 text-xs text-muted">
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-cyan-400"></i>
+                  <span>Afinación de índices y reducción de cuellos de botella en SQL</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-cyan-400"></i>
+                  <span>Soporte correctivo y resolución de incidencias &lt; 24h</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="tech-chip text-xs">Angular 12+</span>
+                <span class="tech-chip text-xs">ASP.NET Core</span>
+                <span class="tech-chip text-xs">SQL Server</span>
+                <span class="tech-chip text-xs">SCRUM / Jira</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-edge flex items-center justify-between text-xs text-muted">
+              <span>Experiencia Laboral Activa</span>
+              <span class="font-mono">Enterprise Grade</span>
+            </div>
+          </div>
+
+          <!-- Proyecto 4: Portales Web Administrables -->
+          <div class="card p-7 flex flex-col justify-between group hover:border-primary-500/50 transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-semibold">
+                  Diseño & Desarrollo Web
+                </span>
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
+                  <i class="ph-bold ph-device-mobile-camera"></i>
+                </div>
+              </div>
+
+              <h3 class="text-2xl font-bold text-main mb-2 group-hover:text-amber-400 transition-colors">
+                Portales Web Administrables (3DoubleU Marketing)
+              </h3>
+
+              <p class="text-muted text-sm leading-relaxed mb-4">
+                Desarrollo y maquetación de plataformas web adaptativas y administrables para clientes comerciales. Conversión pixel-perfect de diseños Figma a interfaces web fluidas y optimizadas para SEO y navegación móvil.
+              </p>
+
+              <div class="space-y-2 mb-6 text-xs text-muted">
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-amber-400"></i>
+                  <span>Interfaces UI/UX 100% responsivas para celulares y tablets</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="ph-bold ph-check-circle text-amber-400"></i>
+                  <span>Optimización de velocidad de carga y estándares cross-browser</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="tech-chip text-xs">PHP</span>
+                <span class="tech-chip text-xs">JavaScript</span>
+                <span class="tech-chip text-xs">HTML5 / CSS3</span>
+                <span class="tech-chip text-xs">UI/UX</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-edge flex items-center justify-between text-xs text-muted">
+              <span>Portales Web y Clientes</span>
+              <span class="font-mono">Web Standards</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACTO SECTION -->
+    <section id="contacto" class="py-20 border-t border-edge relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="section-badge">
+          <i class="ph-bold ph-paper-plane-tilt"></i>
+          <span>Hablemos</span>
+        </div>
+        <h2 class="section-title">Ponte en Contacto</h2>
+        <p class="section-subtitle">¿Tienes un proyecto en puerta, una vacante o buscas un Desarrollador Full Stack confiable? Platiquemos.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-12">
+          
+          <!-- Tarjeta Principal de Contacto -->
+          <div class="lg:col-span-7 card p-8 sm:p-10 bg-gradient-to-br from-card via-card to-card-sub border-2 border-primary-500/20">
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-main mb-3">
+              ¿Listo para dar vida a tu próximo software?
+            </h3>
+            <p class="text-muted leading-relaxed mb-8">
+              Estoy disponible para proyectos de desarrollo a medida, consultoría en arquitecturas .NET y Angular, o para incorporarme a equipos ágiles de alto impacto. Puedes contactarme directamente por WhatsApp o correo:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              
+              <!-- WhatsApp Card -->
+              <a href="https://wa.me/527292612443?text=Hola%20Ezequiel,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20una%20oportunidad" target="_blank" rel="noopener noreferrer" class="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 hover:border-emerald-500/60 hover:-translate-y-1 transition-all group flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-2xl shrink-0 shadow-md shadow-emerald-500/30">
+                  <i class="ph-bold ph-whatsapp-logo"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">WhatsApp Directo</div>
+                  <div class="font-bold text-main text-base group-hover:text-emerald-400 transition-colors">72 92 61 24 43</div>
+                  <div class="text-xs text-muted mt-1">Respuesta rápida</div>
+                </div>
+              </a>
+
+              <!-- Email Card -->
+              <div class="p-5 rounded-2xl bg-primary-500/10 border border-primary-500/25 hover:border-primary-500/60 transition-all flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-primary-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-md shadow-primary-500/30">
+                  <i class="ph-bold ph-envelope"></i>
+                </div>
+                <div class="overflow-hidden">
+                  <div class="text-xs font-semibold text-primary-400 uppercase tracking-wider">Correo Electrónico</div>
+                  <button type="button" onclick="copyToClipboard('josereyesrt@gmail.com', 'Correo copiado al portapapeles')" class="font-bold text-main text-sm truncate block text-left hover:text-primary-400 transition-colors" title="Click para copiar">
+                    josereyesrt@gmail.com
+                  </button>
+                  <a href="mailto:josereyesrt@gmail.com" class="text-xs text-primary-400 hover:underline mt-1 inline-block">Abrir cliente de correo ↗</a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="flex flex-wrap gap-4 items-center pt-6 border-t border-edge">
+              <a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-primary-600 to-indigo-600 text-white shadow-md shadow-primary-600/30 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <i class="ph-bold ph-download-simple"></i>
+                <span>Descargar CV Completo (PDF)</span>
+              </a>
+              <button type="button" onclick="copyToClipboard('7292612443', 'Teléfono copiado al portapapeles')" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm border border-edge bg-card hover:bg-card-sub text-main transition-colors">
+                <i class="ph-bold ph-copy"></i>
+                <span>Copiar Teléfono</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Información de Ubicación & Disponibilidad -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+            
+            <div class="card p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-primary-500/10 text-primary-400 flex items-center justify-center text-xl">
+                  <i class="ph-bold ph-map-pin"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-base text-main">Ubicación</h4>
+                  <div class="text-xs text-muted">San Luis Potosí, S.L.P., México</div>
+                </div>
+              </div>
+              <p class="text-xs text-muted leading-relaxed">
+                Disponible para trabajo remoto en todo México, Latinoamérica y Estados Unidos, así como esquemas híbridos o presenciales en San Luis Potosí.
+              </p>
+            </div>
+
+            <div class="card p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+                  <i class="ph-bold ph-clock"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-base text-main">Zona Horaria</h4>
+                  <div class="text-xs text-muted">CST (GMT-6) — Hora del Centro de México</div>
+                </div>
+              </div>
+              <p class="text-xs text-muted leading-relaxed">
+                Excelente alineación de horarios para proyectos en Norteamérica y colaboración en tiempo real con equipos distribuidos.
+              </p>
+            </div>
+
+            <div class="card p-6 bg-gradient-to-r from-primary-900/20 to-indigo-900/20 border-primary-500/30">
+              <div class="flex items-center gap-3">
+                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></div>
+                <span class="text-sm font-bold text-main">¿Revisando candidatos para tu equipo?</span>
+              </div>
+              <p class="text-xs text-muted mt-2">
+                Descarga una copia de mi currículum actualizado en PDF para tu proceso de selección o entrevista técnica.
+              </p>
+              <a href="cv.pdf" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-primary-400 hover:text-primary-300 mt-3">
+                <span>Ver CV_Ezequiel_Reyes.pdf</span>
+                <i class="ph-bold ph-arrow-square-out"></i>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-edge text-center text-xs text-muted">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <div class="flex items-center gap-2 font-mono font-bold text-sm text-main">
+          <span class="text-primary-500">&lt;ER/&gt;</span>
+          <span>Ezequiel Reyes</span>
+          <span class="text-muted font-normal">| Desarrollador Full Stack</span>
+        </div>
+
+        <div class="flex items-center gap-6 text-muted">
+          <a href="#hero" class="hover:text-primary-400 transition-colors">Inicio</a>
+          <a href="#habilidades" class="hover:text-primary-400 transition-colors">Habilidades</a>
+          <a href="#proyectos" class="hover:text-primary-400 transition-colors">Proyectos</a>
+          <a href="cv.pdf" target="_blank" class="hover:text-primary-400 transition-colors">CV en PDF</a>
+          <a href="#contacto" class="hover:text-primary-400 transition-colors">Contacto</a>
+        </div>
+
+        <div class="text-muted/80">
+          ezequielreyes.dev • © 2026
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 px-5 py-3 rounded-xl bg-card border border-primary-500/40 text-main shadow-2xl">
+    <i class="ph-bold ph-check-circle text-emerald-400 text-xl"></i>
+    <span id="toast-text" class="text-sm font-semibold">Copiado al portapapeles</span>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

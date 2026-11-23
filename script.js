@@ -1,6 +1,11 @@
 /**
- * Ezequiel Reyes Portfolio - Interactive Script
- * Theme toggle, mobile menu, scrollspy, clipboard copying, and toasts.
+ * Ezequiel Reyes Portfolio - Client Scripts
+ * Clean, lightweight, fully accessible interactions:
+ * - Theme switcher (Dark / Light with system preference fallback)
+ * - Accessible mobile navigation drawer
+ * - Navbar scroll state
+ * - Section ScrollSpy
+ * - Accessible clipboard helper with toast feedback
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,10 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
 function initTheme() {
   const themeToggle = document.getElementById('theme-toggle');
   const html = document.documentElement;
-  
-  // Retrieve saved preference or default to dark
-  const savedTheme = localStorage.getItem('er_theme') || 'dark';
-  setTheme(savedTheme);
+
+  // Retrieve saved preference or check system preference (default dark)
+  const savedTheme = localStorage.getItem('er_theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+  setTheme(initialTheme);
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
@@ -29,6 +37,13 @@ function initTheme() {
       localStorage.setItem('er_theme', newTheme);
     });
   }
+
+  // Listen to OS theme changes if user has not explicitly set a preference
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('er_theme')) {
+      setTheme(e.matches ? 'dark' : 'light');
+    }
+  });
 }
 
 function setTheme(theme) {
@@ -50,41 +65,71 @@ function initMobileMenu() {
   const menu = document.getElementById('mobile-menu');
   const links = document.querySelectorAll('.mobile-nav-link');
 
-  if (btn && menu) {
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
+  if (!btn || !menu) return;
 
-    // Close menu when clicking any link
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.add('hidden');
-      });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!btn.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.add('hidden');
-      }
-    });
+  function closeMenu() {
+    menu.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
   }
+
+  function openMenu() {
+    menu.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+
+  btn.addEventListener('click', () => {
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Close menu when clicking any nav link
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+
+  // Close menu on click outside
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Close menu on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+      closeMenu();
+      btn.focus();
+    }
+  });
 }
 
 /* --------------------------------------------------------------------------
-   SCROLL EFFECTS (Navbar padding / glass enhancement)
+   SCROLL EFFECTS (Navbar padding / elevation change on scroll)
    -------------------------------------------------------------------------- */
 function initScrollEffects() {
   const nav = document.getElementById('main-nav');
   if (!nav) return;
 
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      nav.classList.add('py-2');
-      nav.classList.remove('py-3');
-    } else {
-      nav.classList.add('py-3');
-      nav.classList.remove('py-2');
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 30) {
+          nav.classList.add('py-2');
+          nav.classList.remove('py-3');
+        } else {
+          nav.classList.add('py-3');
+          nav.classList.remove('py-2');
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
   }, { passive: true });
 }
@@ -95,32 +140,48 @@ function initScrollEffects() {
 function initScrollSpy() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
   if (!sections.length || !navLinks.length) return;
 
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollPosition = window.scrollY + 180;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        let current = '';
+        const scrollPosition = window.scrollY + 160;
 
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      if (scrollPosition >= top && scrollPosition < top + height) {
-        current = section.getAttribute('id');
-      }
-    });
+        sections.forEach(section => {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            current = section.getAttribute('id');
+          }
+        });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+
+        mobileLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+
+        ticking = false;
+      });
+      ticking = true;
+    }
   }, { passive: true });
 }
 
 /* --------------------------------------------------------------------------
-   CLIPBOARD HELPER & TOAST NOTIFICATION
+   CLIPBOARD HELPER & ACCESSIBLE TOAST NOTIFICATION
    -------------------------------------------------------------------------- */
 function copyToClipboard(text, successMessage = 'Copiado al portapapeles') {
   if (navigator.clipboard && window.isSecureContext) {
@@ -137,16 +198,21 @@ function copyToClipboard(text, successMessage = 'Copiado al portapapeles') {
 function fallbackCopy(text, successMessage) {
   const textArea = document.createElement('textarea');
   textArea.value = text;
+  textArea.setAttribute('readonly', '');
   textArea.style.position = 'fixed';
-  textArea.style.left = '-999999px';
-  textArea.style.top = '-999999px';
+  textArea.style.left = '-9999px';
+  textArea.style.top = '-9999px';
   document.body.appendChild(textArea);
   textArea.focus();
   textArea.select();
   
   try {
-    document.execCommand('copy');
-    showToast(successMessage);
+    const successful = document.execCommand('copy');
+    if (successful) {
+      showToast(successMessage);
+    } else {
+      showToast('Selecciona y copia manualmente');
+    }
   } catch (err) {
     showToast('Selecciona y copia manualmente');
   } finally {
@@ -168,5 +234,5 @@ function showToast(message) {
   toastTimeout = setTimeout(() => {
     toast.classList.remove('translate-y-0', 'opacity-100');
     toast.classList.add('translate-y-20', 'opacity-0');
-  }, 3000);
+  }, 2800);
 }

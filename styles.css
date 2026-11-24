@@ -5,6 +5,16 @@
    ========================================================================== */
 
 :root {
+  /* Modern color-scheme reflection */
+  color-scheme: light dark;
+
+  &:has(> head > meta[name="color-scheme"][content="dark"]) {
+    color-scheme: dark;
+  }
+  &:has(> head > meta[name="color-scheme"][content="light"]) {
+    color-scheme: light;
+  }
+
   /* 60% Dominant Neutral Base (Dark Mode) */
   --bg-body: #0a0f1d;
   --bg-card: #111827;
@@ -106,6 +116,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Modern Typography: Balanced Headings & Pretty Body Wrapping */
+h1, h2, h3, h4, h5, h6, .section-title {
+  text-wrap: balance;
+}
+
+p, li, .section-subtitle {
+  text-wrap: pretty;
+}
+
 /* Tabular Numbers for Data & Metrics */
 .tabular-nums, .stat-num, [data-numeric] {
   font-variant-numeric: tabular-nums;
@@ -145,6 +164,11 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
+/* Navigation container tracking (Modern Web Guidance: scrollspy) */
+.nav-links-container {
+  scroll-target-group: auto;
+}
+
 .nav-link {
   color: var(--text-muted);
   position: relative;
@@ -159,7 +183,7 @@ body {
   background-color: var(--bg-card-sub);
 }
 
-.nav-link.active {
+.nav-link:is(:target-current, .active) {
   color: var(--primary-500);
   background-color: var(--bg-card-sub);
   font-weight: 600;
@@ -177,7 +201,7 @@ body {
   transition: all 0.15s ease;
 }
 
-.mobile-nav-link:hover, .mobile-nav-link.active {
+.mobile-nav-link:hover, .mobile-nav-link:is(:target-current, .active) {
   color: var(--text-main);
   background-color: var(--bg-card-sub);
 }
@@ -478,22 +502,33 @@ html.light .tech-chip-core {
 }
 
 /* ==========================================================================
-   Custom Minimalist Scrollbar
+   Custom Minimalist Scrollbar (Standard scrollbar-color & WebKit Fallback)
    ========================================================================== */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+html {
+  scrollbar-color: var(--border-edge) var(--bg-body);
+  scrollbar-width: thin;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-body);
-}
+@supports not (scrollbar-color: auto) {
+  html {
+    scrollbar-width: auto;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: var(--border-edge);
-  border-radius: 3px;
-}
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-subtle);
+  ::-webkit-scrollbar-track {
+    background: var(--bg-body);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-edge);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-subtle);
+  }
 }

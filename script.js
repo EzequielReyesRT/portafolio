@@ -44,16 +44,27 @@ function initTheme() {
       setTheme(e.matches ? 'dark' : 'light');
     }
   });
+
+  // Cross-tab theme synchronization
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'er_theme' && (e.newValue === 'dark' || e.newValue === 'light')) {
+      setTheme(e.newValue);
+    }
+  });
 }
 
 function setTheme(theme) {
   const html = document.documentElement;
+  const metaColorScheme = document.querySelector('meta[name="color-scheme"]');
+
   if (theme === 'light') {
     html.classList.remove('dark');
     html.classList.add('light');
+    if (metaColorScheme) metaColorScheme.content = 'light';
   } else {
     html.classList.remove('light');
     html.classList.add('dark');
+    if (metaColorScheme) metaColorScheme.content = 'dark';
   }
 }
 
@@ -135,7 +146,7 @@ function initScrollEffects() {
 }
 
 /* --------------------------------------------------------------------------
-   SCROLLSPY (Highlight active section in navbar)
+   SCROLLSPY (Modern CSS scroll-target-group & IntersectionObserver Fallback)
    -------------------------------------------------------------------------- */
 function initScrollSpy() {
   const sections = document.querySelectorAll('section[id]');
@@ -144,40 +155,43 @@ function initScrollSpy() {
 
   if (!sections.length || !navLinks.length) return;
 
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        let current = '';
-        const scrollPosition = window.scrollY + 160;
+  const supportsScrollTargetGroup = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('scroll-target-group: auto');
 
-        sections.forEach(section => {
-          const top = section.offsetTop;
-          const height = section.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            current = section.getAttribute('id');
-          }
-        });
-
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-          }
-        });
-
-        mobileLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-          }
-        });
-
-        ticking = false;
+  if (supportsScrollTargetGroup) {
+    const syncAriaCurrent = () => {
+      const currentLink = document.querySelector('.nav-link:target-current');
+      navLinks.forEach(link => {
+        link.setAttribute('aria-current', link === currentLink ? 'true' : 'false');
       });
-      ticking = true;
-    }
-  }, { passive: true });
+      const currentMobileLink = document.querySelector('.mobile-nav-link:target-current');
+      mobileLinks.forEach(link => {
+        link.setAttribute('aria-current', link === currentMobileLink ? 'true' : 'false');
+      });
+    };
+    syncAriaCurrent();
+    document.addEventListener('scrollend', syncAriaCurrent, { passive: true });
+  } else {
+    // Robust IntersectionObserver fallback for broad browser support
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            const isActive = link.getAttribute('href') === `#${id}`;
+            link.classList.toggle('active', isActive);
+            link.setAttribute('aria-current', isActive ? 'true' : 'false');
+          });
+          mobileLinks.forEach(link => {
+            const isActive = link.getAttribute('href') === `#${id}`;
+            link.classList.toggle('active', isActive);
+            link.setAttribute('aria-current', isActive ? 'true' : 'false');
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+    sections.forEach(section => observer.observe(section));
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -221,12 +235,22 @@ function fallbackCopy(text, successMessage) {
 }
 
 let toastTimeout;
+let lastToastMessage = '';
+
 function showToast(message) {
   const toast = document.getElementById('toast');
   const toastText = document.getElementById('toast-text');
   if (!toast || !toastText) return;
 
-  toastText.textContent = message;
+  // Modern Web Guidance (copy-button): Append \u00A0 on repeated messages
+  // so screen readers (VoiceOver) reliably announce consecutive identical actions
+  let announcedMessage = message;
+  if (announcedMessage === lastToastMessage) {
+    announcedMessage += '\u00A0';
+  }
+  lastToastMessage = announcedMessage;
+
+  toastText.textContent = announcedMessage;
   toast.classList.remove('translate-y-20', 'opacity-0');
   toast.classList.add('translate-y-0', 'opacity-100');
 

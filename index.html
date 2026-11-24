@@ -17,6 +17,20 @@
   <meta property="og:description" content="+3 años desarrollando aplicaciones web empresariales, APIs RESTful y bases de datos relacionales optimizadas.">
   <meta property="og:image" content="https://ezequielreyes.dev/og-image.png">
 
+  <!-- Color Scheme & Referrer Policy (Modern Web Guidance) -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>
+    try {
+      const saved = localStorage.getItem("er_theme");
+      if (saved === "light" || saved === "dark") {
+        document.querySelector('meta[name="color-scheme"]').content = saved;
+        document.documentElement.classList.toggle("dark", saved === "dark");
+        document.documentElement.classList.toggle("light", saved === "light");
+      }
+    } catch (_) {}
+  </script>
+
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%22100%22%20height=%22100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%232563eb%22/><text y=%2265%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2246%22 font-weight=%22800%22 fill=%22white%22>&lt;ER/&gt;</text></svg>">
 
@@ -55,9 +69,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Phosphor Icons (Ligeros, nítidos y vectoriales) -->
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css"/>
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+  <!-- Phosphor Icons (Ligeros, nítidos y protegidos con Subresource Integrity) -->
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" integrity="sha384-nblAP2mo2pVPyMQZDw9Xy9Cwgs9lowushAYep4w5+Q9kF4Ibf3n0B/gCMVdR+Vqy" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" integrity="sha384-6p9AefaqUhEVheRlj1mpAkbngHXy9mbYMrIdcIt4Jlc9lOLIablJq3bBsLOjGwZ7" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -82,8 +96,8 @@
           </span>
         </a>
 
-        <!-- Desktop Navigation Links -->
-        <div class="hidden md:flex items-center gap-1 text-sm">
+        <!-- Desktop Navigation Links (with scroll-target-group tracking) -->
+        <div class="nav-links-container hidden md:flex items-center gap-1 text-sm">
           <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
           <a href="#habilidades" class="nav-link">Habilidades</a>
           <a href="#experiencia" class="nav-link">Experiencia</a>
@@ -148,7 +162,7 @@
 
   <main>
     <!-- HERO SECTION -->
-    <section id="hero" class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+    <section id="hero" tabindex="-1" class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden outline-none">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col items-center text-center">
           
@@ -206,7 +220,7 @@
               <span>San Luis Potosí, México</span>
             </div>
             <span class="hidden sm:inline text-edge">•</span>
-            <button type="button" onclick="copyToClipboard('josereyesrt@gmail.com', 'Correo copiado al portapapeles')" class="flex items-center gap-1.5 hover:text-primary-400 transition-colors group cursor-pointer" title="Haga clic para copiar">
+            <button type="button" onclick="copyToClipboard('josereyesrt@gmail.com', 'Correo copiado al portapapeles')" aria-label="Copiar correo electrónico josereyesrt@gmail.com" class="flex items-center gap-1.5 hover:text-primary-400 transition-colors group cursor-pointer" title="Haga clic para copiar">
               <i class="ph-bold ph-envelope text-primary-500"></i>
               <span class="group-hover:underline">josereyesrt@gmail.com</span>
               <i class="ph ph-copy text-xs text-subtle group-hover:text-primary-400"></i>
@@ -243,7 +257,7 @@
     </section>
 
     <!-- SOBRE MÍ SECTION -->
-    <section id="sobre-mi" class="py-20 border-t border-edge relative">
+    <section id="sobre-mi" tabindex="-1" class="py-20 border-t border-edge relative outline-none">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         
         <div class="section-badge">
@@ -362,7 +376,7 @@
     </section>
 
     <!-- HABILIDADES SECTION -->
-    <section id="habilidades" class="py-20 border-t border-edge relative">
+    <section id="habilidades" tabindex="-1" class="py-20 border-t border-edge relative outline-none">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         
         <div class="section-badge">
@@ -513,7 +527,7 @@
     </section>
 
     <!-- EXPERIENCIA LABORAL SECTION -->
-    <section id="experiencia" class="py-20 border-t border-edge relative">
+    <section id="experiencia" tabindex="-1" class="py-20 border-t border-edge relative outline-none">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         
         <div class="section-badge">
@@ -632,7 +646,7 @@
     </section>
 
     <!-- PROYECTOS DESTACADOS SECTION -->
-    <section id="proyectos" class="py-20 border-t border-edge relative">
+    <section id="proyectos" tabindex="-1" class="py-20 border-t border-edge relative outline-none">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         
         <div class="section-badge">
@@ -832,7 +846,7 @@
     </section>
 
     <!-- CONTACTO SECTION -->
-    <section id="contacto" class="py-20 border-t border-edge relative">
+    <section id="contacto" tabindex="-1" class="py-20 border-t border-edge relative outline-none">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         
         <div class="section-badge">
@@ -874,7 +888,7 @@
                 </div>
                 <div class="overflow-hidden">
                   <div class="text-[11px] font-mono text-primary-400 uppercase tracking-wider font-semibold">Correo Electrónico</div>
-                  <button type="button" onclick="copyToClipboard('josereyesrt@gmail.com', 'Correo copiado al portapapeles')" class="font-bold text-main text-xs truncate block text-left hover:text-primary-400 transition-colors mt-0.5" title="Haga clic para copiar">
+                  <button type="button" onclick="copyToClipboard('josereyesrt@gmail.com', 'Correo copiado al portapapeles')" aria-label="Copiar correo electrónico josereyesrt@gmail.com" class="font-bold text-main text-xs truncate block text-left hover:text-primary-400 transition-colors mt-0.5" title="Haga clic para copiar">
                     josereyesrt@gmail.com
                   </button>
                   <a href="mailto:josereyesrt@gmail.com" class="text-[11px] text-primary-400 hover:underline mt-0.5 inline-block">Abrir cliente de correo ↗</a>
@@ -889,7 +903,7 @@
                 <i class="ph-bold ph-file-arrow-down text-sm"></i>
                 <span>Descargar CV Completo (PDF)</span>
               </a>
-              <button type="button" onclick="copyToClipboard('7292612443', 'Teléfono copiado al portapapeles')" class="btn-secondary !text-xs !py-2.5">
+              <button type="button" onclick="copyToClipboard('7292612443', 'Teléfono copiado al portapapeles')" aria-label="Copiar teléfono 72 92 61 24 43" class="btn-secondary !text-xs !py-2.5">
                 <i class="ph-bold ph-copy text-sm"></i>
                 <span>Copiar Teléfono</span>
               </button>

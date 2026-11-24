@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-24T16:29:16Z",
+  "title": "Design System: Ezequiel Reyes Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Cobalt Core Tech",
+        "canonical": "#2563eb",
+        "tonalRamp": ["#eff6ff", "#dbeafe", "#bfdbfe", "#93c5fd", "#60a5fa", "#3b82f6", "#2563eb", "#1e3a8a"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Deep Obsidian Slate",
+        "canonical": "#0a0f1d",
+        "tonalRamp": ["#f8fafc", "#e2e8f0", "#94a3b8", "#64748b", "#334155", "#1e293b", "#111827", "#0a0f1d"]
+      },
+      "surface-card": {
+        "role": "neutral",
+        "displayName": "Steel Slate Card",
+        "canonical": "#111827",
+        "tonalRamp": ["#f8fafc", "#f1f5f9", "#e2e8f0", "#475569", "#334155", "#1e293b", "#182234", "#111827"]
+      },
+      "success": {
+        "role": "tertiary",
+        "displayName": "Functional Emerald",
+        "canonical": "#10b981",
+        "tonalRamp": ["#ecfdf5", "#d1fae5", "#a7f3d0", "#6ee7b7", "#34d399", "#10b981", "#059669", "#064e3b"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero main statement only." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Card and module titles." },
+      "body": { "displayName": "Body", "purpose": "Narrative copy with text-wrap: pretty." },
+      "label": { "displayName": "Label / Monospace", "purpose": "Stats, tabular numbers and tech badges." }
+    },
+    "shadows": [
+      { "name": "card", "value": "0 4px 20px -2px rgba(0, 0, 0, 0.35), 0 2px 6px -1px rgba(0, 0, 0, 0.2)", "purpose": "Resting elevation for cards." },
+      { "name": "hover", "value": "0 10px 25px -4px rgba(0, 0, 0, 0.45), 0 4px 10px -2px rgba(0, 0, 0, 0.25)", "purpose": "Interactive lift response on hover." },
+      { "name": "glow", "value": "0 0 20px -5px rgba(59, 130, 246, 0.25)", "purpose": "Signature highlight for featured projects." }
+    ],
+    "motion": [
+      { "name": "ease-out-standard", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Smooth transition for card hover and modal drawer." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary high-contrast call to action for key conversions.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V80H40V56ZM40,200V96H216V200Z\"/></svg><span>Ver Proyectos</span></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 10px; background-color: #2563eb; color: #ffffff; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 14px; border: 1px solid transparent; cursor: pointer; transition: background-color 0.15s ease, transform 0.15s ease; } .ds-btn-primary:hover { background-color: #3b82f6; transform: translateY(-1px); } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Action Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary surface action button with subtle border.",
+      "html": "<button class=\"ds-btn-secondary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 256 256\" fill=\"#10b981\"><path d=\"M187.58,144.84l-32-16a8,8,0,0,0-8,.8l-14.61,11A79.7,79.7,0,0,1,99.4,107.05L110.37,92.5a8,8,0,0,0,.79-8l-16-32A8,8,0,0,0,88,48H56a8,8,0,0,0-8,8,152,152,0,0,0,152,152,8,8,0,0,0,8-8V168A8,8,0,0,0,187.58,144.84Z\"/></svg><span>Enviar WhatsApp</span></button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 10px; background-color: #111827; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 14px; border: 1px solid #1e293b; cursor: pointer; transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease; } .ds-btn-secondary:hover { background-color: #182234; border-color: #3b82f6; transform: translateY(-1px); } .ds-btn-secondary:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Tech Chip Badge",
+      "kind": "chip",
+      "refersTo": "chip-tech",
+      "description": "Monospaced technical badge for frameworks and skills.",
+      "html": "<span class=\"ds-tech-chip\">Angular 12+</span>",
+      "css": ".ds-tech-chip { display: inline-flex; align-items: center; padding: 5px 10px; border-radius: 6px; background-color: #182234; border: 1px solid #1e293b; font-family: 'Fira Code', monospace; font-size: 12px; font-weight: 500; color: #f8fafc; transition: border-color 0.15s ease, color 0.15s ease; } .ds-tech-chip:hover { border-color: #3b82f6; color: #60a5fa; }"
+    },
+    {
+      "name": "Engineering Card",
+      "kind": "card",
+      "refersTo": "card-container",
+      "description": "Structured card container with dark surface and subtle border.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">ASP.NET Core</h3><p class=\"ds-card-text\">APIs RESTful de alto rendimiento y arquitectura limpia.</p></div>",
+      "css": ".ds-card { background-color: #111827; border: 1px solid #1e293b; border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35); transition: border-color 0.2s ease, transform 0.2s ease; } .ds-card:hover { border-color: #3b82f6; transform: translateY(-2px); } .ds-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; color: #f8fafc; margin: 0 0 8px 0; } .ds-card-text { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: #94a3b8; line-height: 1.6; margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Precision Engineering Console",
+    "overview": "El sistema visual del portafolio se concibe como una consola técnica de ingeniería de alta precisión. Cada decisión visual proyecta autoridad, fiabilidad operativa y sobriedad arquitectónica. La interfaz elimina adornos superficiales para que la verdad del producto (código limpio, SLAs < 24h, arquitectura .NET/Angular y bases de datos afinadas) sea el protagonista inmediato.",
+    "keyCharacteristics": [
+      "Superficies sólidas en pizarra profunda con bordes estructurales de 1px (#1e293b).",
+      "Regla 60-30-10 estricta con acento azul cobalto dosificado exclusivamente en llamadas a la acción primarias e indicadores activos.",
+      "Micro-retícula arquitectónica de fondo (.bg-grid-ambient) atenuada con máscara radial elíptica.",
+      "Tipografía dual rigurosa: Plus Jakarta Sans para lectura fluida y Fira Code con tabular-nums para exactitud métrica."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Rarity Rule",
+        "body": "El color de acento azul (#2563eb) se utiliza en <= 10% de la superficie visible en cualquier viewport. Su fuerza radica en su escasez.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Metric Rule",
+        "body": "Todo número, fecha o indicador estadístico debe renderizarse obligatoriamente con font-variant-numeric: tabular-nums o dentro de fuente monoespaciada.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-at-Rest Rule",
+        "body": "Los elementos interactivos reposan planos o con sombra neutra difusa mínima; la elevación y el resaltado de borde son exclusivamente una respuesta háptica a la acción del usuario.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do reservar el color de acento azul (#2563eb) estrictamente para llamadas a la acción, enlaces activos e indicadores de estado clave.",
+      "Do usar tabular-nums en toda métrica, fecha, temporizador o cifra numérica en tablas y dashboards.",
+      "Do garantizar en todo momento un contraste mínimo conforme al estándar WCAG AA (ratio mínimo de 4.5:1 para texto normal).",
+      "Do implementar visualmente los 4 estados en todo elemento interactivo (Hover, Focus-visible, Active, Disabled).",
+      "Do utilizar iconografía vectorial SVG profesional (Phosphor Icons) con tamaños consistentes (16-24px)."
+    ],
+    "donts": [
+      "Don't utilizar degradados repetitivos neón morado/cian genéricos de IA como fondo o bordes iluminados.",
+      "Don't abusar del efecto glassmorphism con desenfoques excesivos que degraden la legibilidad o ralenticen el renderizado.",
+      "Don't emplear emojis como sustitutos de iconos de interfaz en botones o tarjetas.",
+      "Don't construir grillas simétricas repetitivas de 3 tarjetas idénticas en todas las secciones; variar la composición según la naturaleza del contenido.",
+      "Don't utilizar frases de relleno vacías de marketing; comunicar hechos técnicos precisos y comprobables."
+    ]
+  }
+}

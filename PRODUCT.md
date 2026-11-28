@@ -41,7 +41,7 @@ Desarrollador Full Stack con más de 3 años de experiencia en entornos producti
 ## Evidence on Hand
 
 - **Proyectos en Producción:**
-  - *Bola de Nieve:* Simulador financiero en vivo en `https://deudas.ezequielreyes.dev` (Next.js 16, React 19, TypeScript, Supabase PostgreSQL, Recharts, Cloudflare).
+  - *Bola de Nieve:* Simulador financiero en vivo en `https://deudas.ezequielreyes.dev` (Next.js 16, React 19, TypeScript, Supabase PostgreSQL, Recharts, Cloudflare) con credenciales demo para reclutadores (Usuario: `Demo`, Contraseña: `P9p4212*VF)%`).
 - **Trayectoria Profesional:**
   - *Imex Bioware (Marzo 2022 – Presente):* Desarrollador Full Stack (.NET, Angular, SQL Server, resolución de incidentes < 24h, SCRUM).
   - *3DoubleU Marketing (Ene 2021 – Ago 2021):* Desarrollador Web (PHP, JavaScript, HTML5/CSS3, diseño responsivo).

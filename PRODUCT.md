@@ -24,7 +24,7 @@ Desarrollador Full Stack con más de 3 años de experiencia en entornos producti
 
 - **Evaluación Rápida:** Los reclutadores suelen escanear perfiles en 30-60 segundos desde computadoras de escritorio o dispositivos móviles.
 - **Zona Horaria y Ubicación:** San Luis Potosí, México (CST / GMT-6), con disponibilidad para esquemas 100% remotos en Norteamérica y LATAM o esquemas híbridos locales.
-- **Canales de Acción Rápida:** Acceso con 1 clic a WhatsApp directo, copiado instantáneo de correo electrónico y enlace permanente al PDF del CV.
+- **Canales de Acción Rápida:** Acceso con 1 clic a WhatsApp directo, copiado instantáneo de correo electrónico, enlace permanente al PDF del CV y perfiles profesionales verificados en GitHub (`https://github.com/EzequielReyesRT`) y LinkedIn (`https://www.linkedin.com/in/ezequielreyest`).
 
 ## Capabilities and Constraints
 

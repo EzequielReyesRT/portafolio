@@ -105,8 +105,16 @@
           <a href="#contacto" class="nav-link">Contacto</a>
         </div>
 
-        <!-- Action Items (Theme + Download + Mobile Trigger) -->
+        <!-- Action Items (Socials + Theme + Download + Mobile Trigger) -->
         <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Social Icons (GitHub & LinkedIn) -->
+          <a href="https://github.com/EzequielReyesRT" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub de Ezequiel Reyes" title="GitHub (EzequielReyesRT)" class="btn-icon">
+            <i class="ph-bold ph-github-logo text-lg text-main"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ezequielreyest" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn de Ezequiel Reyes" title="LinkedIn (ezequielreyest)" class="btn-icon">
+            <i class="ph-bold ph-linkedin-logo text-lg text-[#0A66C2]"></i>
+          </a>
+
           <!-- Theme Switcher -->
           <button id="theme-toggle" type="button" aria-label="Cambiar tema de color" class="btn-icon">
             <i class="ph ph-sun text-lg dark:hidden"></i>
@@ -150,10 +158,16 @@
           <span>Contacto</span>
           <i class="ph ph-arrow-right text-xs text-muted"></i>
         </a>
-        <div class="pt-2 border-t border-edge mt-1">
-          <a href="CV_Ezequiel_Reyes.pdf" download="CV_Ezequiel_Reyes.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary w-full !py-2.5">
+        <div class="pt-2 border-t border-edge mt-1 flex items-center gap-2">
+          <a href="CV_Ezequiel_Reyes.pdf" download="CV_Ezequiel_Reyes.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary flex-1 !py-2.5">
             <i class="ph-bold ph-file-arrow-down text-base"></i>
             <span>Descargar CV (PDF)</span>
+          </a>
+          <a href="https://github.com/EzequielReyesRT" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub de Ezequiel Reyes" title="GitHub" class="btn-icon shrink-0">
+            <i class="ph-bold ph-github-logo text-lg text-main"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ezequielreyest" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn de Ezequiel Reyes" title="LinkedIn" class="btn-icon shrink-0">
+            <i class="ph-bold ph-linkedin-logo text-lg text-[#0A66C2]"></i>
           </a>
         </div>
       </div>
@@ -211,6 +225,14 @@
               <i class="ph-bold ph-file-pdf text-red-400 text-base"></i>
               <span>Ver CV (PDF)</span>
             </a>
+            <div class="flex items-center gap-2">
+              <a href="https://github.com/EzequielReyesRT" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub de Ezequiel Reyes" title="GitHub (EzequielReyesRT)" class="btn-icon">
+                <i class="ph-bold ph-github-logo text-lg text-main"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/ezequielreyest" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn de Ezequiel Reyes" title="LinkedIn (ezequielreyest)" class="btn-icon">
+                <i class="ph-bold ph-linkedin-logo text-lg text-[#0A66C2]"></i>
+              </a>
+            </div>
           </div>
 
           <!-- Quick Contact Metadata Bar -->
@@ -907,6 +929,14 @@
                 <i class="ph-bold ph-copy text-sm"></i>
                 <span>Copiar Teléfono</span>
               </button>
+              <a href="https://github.com/EzequielReyesRT" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub de Ezequiel Reyes" class="btn-secondary !text-xs !py-2.5" title="Ver perfil de GitHub">
+                <i class="ph-bold ph-github-logo text-sm text-main"></i>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/ezequielreyest" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn de Ezequiel Reyes" class="btn-secondary !text-xs !py-2.5" title="Ver perfil de LinkedIn">
+                <i class="ph-bold ph-linkedin-logo text-sm text-[#0A66C2]"></i>
+                <span>LinkedIn</span>
+              </a>
             </div>
           </div>
 
@@ -968,7 +998,7 @@
   <!-- FOOTER -->
   <footer class="py-10 border-t border-edge text-xs text-muted">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-edge">
         
         <div class="flex items-center gap-2 font-mono text-xs text-main">
           <span class="text-primary-500 font-bold">&lt;ER/&gt;</span>
@@ -976,6 +1006,32 @@
           <span class="text-subtle">| Full Stack Developer</span>
         </div>
 
+        <!-- Social & Contact Direct Links -->
+        <div class="flex flex-wrap items-center justify-center gap-4 text-xs">
+          <a href="https://github.com/EzequielReyesRT" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-primary-400 transition-colors" title="GitHub">
+            <i class="ph-bold ph-github-logo text-sm text-main"></i>
+            <span>GitHub</span>
+          </a>
+          <span class="text-edge">•</span>
+          <a href="https://www.linkedin.com/in/ezequielreyest" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-primary-400 transition-colors" title="LinkedIn">
+            <i class="ph-bold ph-linkedin-logo text-sm text-[#0A66C2]"></i>
+            <span>LinkedIn</span>
+          </a>
+          <span class="text-edge">•</span>
+          <button type="button" onclick="copyToClipboard('josereyesrt@gmail.com', 'Correo copiado al portapapeles')" aria-label="Copiar correo electrónico josereyesrt@gmail.com" class="flex items-center gap-1.5 hover:text-primary-400 transition-colors group cursor-pointer" title="Copiar correo">
+            <i class="ph-bold ph-envelope text-primary-500"></i>
+            <span class="group-hover:underline">josereyesrt@gmail.com</span>
+          </button>
+          <span class="text-edge">•</span>
+          <a href="tel:+527292612443" class="flex items-center gap-1.5 hover:text-primary-400 transition-colors" title="Llamar">
+            <i class="ph-bold ph-phone text-primary-500"></i>
+            <span>72 92 61 24 43</span>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
         <div class="flex items-center gap-5 text-muted">
           <a href="#hero" class="hover:text-primary-400 transition-colors">Inicio</a>
           <a href="#sobre-mi" class="hover:text-primary-400 transition-colors">Sobre Mí</a>
